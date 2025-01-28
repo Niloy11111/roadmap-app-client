@@ -6,6 +6,7 @@ import {
   FetchArgs,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
+import { toast } from "sonner";
 import { logout, setUser } from "../features/auth/authSlice";
 import { RootState } from "../store";
 
@@ -30,6 +31,10 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 > = async (args, api, extraOptions): Promise<any> => {
   // this error show for expire the access token time  limit
   let result = await baseQuery(args, api, extraOptions);
+
+  if (result.error?.status == 404) {
+    toast.error(result.error.data.message);
+  }
 
   if (result.error?.status == 401) {
     // send Refresh
