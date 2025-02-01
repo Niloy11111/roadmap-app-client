@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"made routes dynamically, implement academicManagement properly\" && git push"
+    "commit": "git add . && git commit -m \"completed all admin actions including semester registration,academic management,course management with redux, react router dom, ant design, mongoose \" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
