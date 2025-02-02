@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \" Force user to change password on first time login\" && git push"
+    "commit": "git add . && git commit -m \"corrected some change password issues in Login page\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
