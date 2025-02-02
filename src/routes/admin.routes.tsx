@@ -4,6 +4,10 @@ import AcademicSemester from "../pages/admin/academicManagement/AcademicSemester
 import CreateAcademicDepartment from "../pages/admin/academicManagement/CreateAcademicDepartment";
 import CreateAcademicSemester from "../pages/admin/academicManagement/CreateAcademicSemester";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import Courses from "../pages/admin/courseManagement/Courses";
+import CreateCourse from "../pages/admin/courseManagement/CreateCourse";
+import OfferCourse from "../pages/admin/courseManagement/OffereCourse";
+import RegisteredSemesters from "../pages/admin/courseManagement/RegesteredSemesters";
 import SemesterRegistration from "../pages/admin/courseManagement/SemesterRegistration";
 import CreateAdmin from "../pages/admin/userManagement/CreateAdmin";
 import CreateFaculty from "../pages/admin/userManagement/CreateFaculty";
@@ -84,26 +88,26 @@ export const adminPaths = [
         path: "semester-registration",
         element: <SemesterRegistration />,
       },
-      // {
-      //   name: 'Registered Semesters',
-      //   path: 'registered-semesters',
-      //   element: <RegisteredSemesters />,
-      // },
-      // {
-      //   name: 'Create Course',
-      //   path: 'create-course',
-      //   element: <CreateCourse />,
-      // },
-      // {
-      //   name: 'Courses',
-      //   path: 'courses',
-      //   element: <Courses />,
-      // },
-      // {
-      //   name: 'Offer Course',
-      //   path: 'offer-course',
-      //   element: <OfferCourse />,
-      // },
+      {
+        name: "Registered Semesters",
+        path: "registered-semesters",
+        element: <RegisteredSemesters />,
+      },
+      {
+        name: "Create Course",
+        path: "create-course",
+        element: <CreateCourse />,
+      },
+      {
+        name: "Courses",
+        path: "courses",
+        element: <Courses />,
+      },
+      {
+        name: "Offer Course",
+        path: "offer-course",
+        element: <OfferCourse />,
+      },
       // {
       //   name: 'Offered Courses',
       //   path: 'offered-courses',

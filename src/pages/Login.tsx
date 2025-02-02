@@ -17,8 +17,8 @@ const Login = () => {
   // const { register } = useFormContext();
 
   const defaultValues = {
-    userId: "A-0001",
-    password: "admin123",
+    userId: "2025010001",
+    password: "student123",
   };
 
   const [login] = useLoginMutation();
