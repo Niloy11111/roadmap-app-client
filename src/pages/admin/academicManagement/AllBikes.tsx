@@ -10,7 +10,7 @@ export type TTableData = Pick<
   "name" | "year" | "startMonth" | "endMonth"
 >;
 
-const AcademicSemester = () => {
+const AllBikes = () => {
   const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
   const {
     data: semesterData,
@@ -127,4 +127,4 @@ const AcademicSemester = () => {
   );
 };
 
-export default AcademicSemester;
+export default AllBikes;

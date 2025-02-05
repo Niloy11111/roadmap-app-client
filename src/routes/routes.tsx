@@ -1,17 +1,30 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
+import RootLayout from "../components/layout/RootLayout";
+import ErrorPage from "../components/ui/pages/error/Errorpage";
+import Homepage from "../components/ui/pages/home/Homepage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ChangePassword from "../pages/student/ChangePassword";
 import { routeGenerator } from "../utils/routesGenerator";
 import { adminPaths } from "./admin.routes";
-import { facultyPaths } from "./faculty.routes";
-import { studentPaths } from "./student.routes";
+import { studentPaths } from "./customer.routes";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
     element: <App />,
   },
   {
@@ -23,19 +36,11 @@ const router = createBrowserRouter([
     ),
     children: routeGenerator(adminPaths),
   },
+
   {
-    path: "/faculty",
+    path: "/customer",
     element: (
-      <ProtectedRoute role="faculty">
-        <App />
-      </ProtectedRoute>
-    ),
-    children: routeGenerator(facultyPaths),
-  },
-  {
-    path: "/student",
-    element: (
-      <ProtectedRoute role="student">
+      <ProtectedRoute role="customer">
         <App />
       </ProtectedRoute>
     ),

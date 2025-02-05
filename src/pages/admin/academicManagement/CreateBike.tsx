@@ -31,7 +31,7 @@ const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
   label: String(currentYear + number),
 }));
 
-const CreateAcademicSemester = () => {
+const CreateBike = () => {
   const [addAcademicSemesters] = useAddAcademicSemestersMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -81,4 +81,4 @@ const CreateAcademicSemester = () => {
   );
 };
 
-export default CreateAcademicSemester;
+export default CreateBike;

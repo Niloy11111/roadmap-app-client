@@ -4,42 +4,39 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import PHForm from "../components/form/PHForm";
 import PHInput from "../components/form/PHInput";
-import { useLoginMutation } from "../redux/features/auth/authApi";
-import { setUser, TUser } from "../redux/features/auth/authSlice";
+import { useRegisterMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
-import { verifyToken } from "../utils/verifyToken";
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const defaultValues = {
+    name: "David",
     email: "david@gmail.com",
     password: "securepassword",
   };
 
-  const [login] = useLoginMutation();
+  const [register] = useRegisterMutation();
 
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
-    const toastId = toast.loading("Logging in");
+    const toastId = toast.loading("Regestering..");
 
     try {
       const userInfo = {
+        name: data.name,
         email: data.email,
         password: data.password,
       };
-      const res = await login(userInfo).unwrap();
+      const res = await register(userInfo).unwrap();
+      console.log("new res", res);
 
-      const user = verifyToken(res.data.accessToken) as TUser;
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
-      toast.success("Logged in", { id: toastId, duration: 2000 });
+      // const user = verifyToken(res.data.accessToken) as TUser;
+      // dispatch(setUser({ user: user, token: res.data.accessToken }));
+      toast.success("Regestered", { id: toastId, duration: 2000 });
 
-      if (res.data.needsPasswordChange) {
-        navigate(`/change-password`);
-      } else {
-        navigate(`/${user.role}/profile`);
-      }
+      navigate(`/login`);
     } catch (err) {
       toast.error("Something went wrong", { id: toastId, duration: 2000 });
     }
@@ -48,18 +45,19 @@ const Login = () => {
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+        <PHInput type="text" name="name" label="Full Name:" />
         <PHInput type="email" name="email" label="Email:" />
 
         <PHInput type="text" name="password" label="Password:" />
 
-        <Button htmlType="submit">Login</Button>
+        <Button htmlType="submit">Register</Button>
 
         <p className="mt-2">
-          Don't have an account? <Link to="/register">Create Account</Link>{" "}
+          Already have an account? <Link to="/login">Login</Link>{" "}
         </p>
       </PHForm>
     </Row>
   );
 };
 
-export default Login;
+export default Register;

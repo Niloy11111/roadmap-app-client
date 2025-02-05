@@ -2,8 +2,7 @@ import { Layout, Menu } from "antd";
 import { TUser, useCurrentToken } from "../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../redux/hooks";
 import { adminPaths } from "../../routes/admin.routes";
-import { facultyPaths } from "../../routes/faculty.routes";
-import { studentPaths } from "../../routes/student.routes";
+import { studentPaths } from "../../routes/customer.routes";
 import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import { verifyToken } from "../../utils/verifyToken";
 
@@ -20,8 +19,7 @@ const Sidebar = () => {
 
   const userRole = {
     ADMIN: "admin",
-    FACULTY: "faculty",
-    STUDENT: "student",
+    STUDENT: "customer",
   };
 
   let sidebarItems;
@@ -30,9 +28,7 @@ const Sidebar = () => {
     case userRole.ADMIN:
       sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
       break;
-    case userRole.FACULTY:
-      sidebarItems = sidebarItemsGenerator(facultyPaths, userRole.FACULTY);
-      break;
+
     case userRole.STUDENT:
       sidebarItems = sidebarItemsGenerator(studentPaths, userRole.STUDENT);
       break;

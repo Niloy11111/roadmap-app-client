@@ -1,5 +1,11 @@
-* {
+@import "tailwindcss";
+@plugin "daisyui";
+.dashboard-global {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.ant-button {
+  margin-left: 10px;
 }
