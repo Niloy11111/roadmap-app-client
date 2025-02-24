@@ -13,9 +13,17 @@ type TPHSelectProps = {
     | undefined;
   disabled?: boolean;
   mode?: "multiple" | undefined;
+  defaultValue?: string;
 };
 
-const PHSelect = ({ label, name, options, disabled, mode }: TPHSelectProps) => {
+const PHSelect = ({
+  label,
+  name,
+  options,
+  disabled,
+  mode,
+  defaultValue,
+}: TPHSelectProps) => {
   return (
     <Controller
       name={name}
@@ -25,6 +33,7 @@ const PHSelect = ({ label, name, options, disabled, mode }: TPHSelectProps) => {
             mode={mode}
             style={{ width: "100%" }}
             {...field}
+            defaultValue={defaultValue || ""}
             //  {...field} this works all like onChange={field.onChange}
             options={options}
             size="large"

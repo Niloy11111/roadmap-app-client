@@ -1,63 +1,42 @@
-import { TQueryParam, TResponseRedux, TStudent } from "../../../types";
+import { TResponseRedux, TUser } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllStudents: builder.query({
-      query: (args) => {
-        const params = new URLSearchParams();
-        // params.append(args[0].name, args[0].value);
-
-        if (args) {
-          args.forEach((item: TQueryParam) => {
-            params.append(item.name, item.value as string);
-          });
-        }
-
-        return {
-          url: "/students",
-          method: "GET",
-          params: params,
-        };
-      },
-      transformResponse: (response: TResponseRedux<TStudent[]>) => {
+    getUsers: builder.query({
+      query: () => "/users/allUsers",
+      providesTags: ["user"],
+      transformResponse: (response: TResponseRedux<TUser[]>) => {
         return {
           data: response.data,
-          meta: response.meta,
+          // meta: response.meta,
         };
       },
     }),
-    getAllFaculties: builder.query({
-      query: (args) => {
-        const params = new URLSearchParams();
-        // params.append(args[0].name, args[0].value);
-
-        if (args) {
-          args.forEach((item: TQueryParam) => {
-            params.append(item.name, item.value as string);
-          });
-        }
-
-        return {
-          url: "/faculties",
-          method: "GET",
-          params: params,
-        };
-      },
-      transformResponse: (response: TResponseRedux<TStudent[]>) => {
-        return {
-          data: response.data,
-          meta: response.meta,
-        };
-      },
-    }),
-    addStudent: builder.mutation({
-      query: (data) => ({
-        url: "/users/create-student",
-        method: "POST",
-        body: data,
+    blockUser: builder.mutation({
+      query: (args) => ({
+        url: `/admin/users/${args.id}/block`,
+        method: "PATCH",
+        body: args.data,
       }),
+      invalidatesTags: ["user"],
     }),
+    deleteUser: builder.mutation({
+      query: (args) => ({
+        url: `admin/users/${args.id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["user"],
+    }),
+    updateUserProfile: builder.mutation({
+      query: (args) => ({
+        url: `/users/${args.id}`,
+        method: "PATCH",
+        body: args.data,
+      }),
+      invalidatesTags: ["user"],
+    }),
+
     changePassword: builder.mutation({
       query: (data) => ({
         url: "/auth/change-password",
@@ -69,8 +48,9 @@ const userManagementApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useAddStudentMutation,
-  useGetAllFacultiesQuery,
-  useGetAllStudentsQuery,
+  useUpdateUserProfileMutation,
+  useDeleteUserMutation,
+  useGetUsersQuery,
   useChangePasswordMutation,
+  useBlockUserMutation,
 } = userManagementApi;

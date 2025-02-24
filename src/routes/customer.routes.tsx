@@ -1,12 +1,16 @@
-export const studentPaths = [
+import CustomerOrderLists from "../pages/customer/orderManagemnt/CustomerOrderLists";
+import DashboardUserProfile from "../pages/dashboardUserProfile/DashboardUserProfile";
+
+export const customerPaths = [
   {
     name: "Profile",
     path: "profile",
-    element: "<StudentDashboard />",
+    element: <DashboardUserProfile />,
   },
+
   {
-    name: "Offered Course",
-    path: "offered-course",
-    element: "<OfferedCourse />",
+    name: "View Orders",
+    path: "view-orders",
+    element: <CustomerOrderLists />,
   },
 ];

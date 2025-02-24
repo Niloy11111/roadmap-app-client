@@ -1,84 +1,75 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Col, Flex } from "antd";
-import { FieldValues, SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
-import PHForm from "../../../components/form/PHForm";
-import PHSelect from "../../../components/form/PHSelect";
-import { monthOptions } from "../../../constants/global";
-import { useAddAcademicSemestersMutation } from "../../../redux/features/admin/academicManagement.api";
-import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
-import { TResponse } from "../../../types/global";
+// import { Button, Col, Flex } from "antd";
+// import { FieldValues, SubmitHandler } from "react-hook-form";
+// import { toast } from "sonner";
+// import PHForm from "../../../components/form/PHForm";
+// import PHInput from "../../../components/form/PHInput";
+// import PHSelect from "../../../components/form/PHSelect";
+// import { categoriesOptions } from "../../../constants/global";
+// import { useAddProductMutation } from "../../../redux/features/admin/productManagement.api";
+// import { TResponse } from "../../../types";
 
-const nameOptions = [
-  {
-    value: "01",
-    label: "Autumn",
-  },
-  {
-    value: "02",
-    label: "Summer",
-  },
-  {
-    value: "03",
-    label: "Fall",
-  },
-];
+// const CreateBike = () => {
+//   const [addProduct] = useAddProductMutation();
 
-const currentYear = new Date().getFullYear();
+//   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+//     const toastId = toast.loading("Creating... ");
 
-const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
-  value: String(currentYear + number),
-  label: String(currentYear + number),
-}));
+//     const category = data?.category
+//       ?.toLowerCase()
+//       .replace(/^./, (c: string) => c.toUpperCase());
 
-const CreateBike = () => {
-  const [addAcademicSemesters] = useAddAcademicSemestersMutation();
+//     const bikeData = {
+//       name: data.name,
+//       brand: data.brand,
+//       model: data.model,
+//       price: Number(data.price),
+//       description: data.description,
+//       category: category,
+//       inStock: data.inStock,
+//       quantity: Number(data.quantity),
+//     };
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("Creating... ");
-    const name = nameOptions[Number(data?.name) - 1]?.label;
+//     console.log("createbike", bikeData);
 
-    const semesterData = {
-      name,
-      code: data.name,
-      year: data.year,
-      startMonth: data.startMonth,
-      endMonth: data.endMonth,
-    };
+//     try {
+//       const res = (await addProduct(bikeData)) as TResponse;
+//       if (res.error) {
+//         toast.error(res.error.data.message, { id: toastId });
+//       } else {
+//         toast.success("Bike Created", { id: toastId });
+//       }
+//     } catch (err) {
+//       toast.error("Something went wrong", { id: toastId });
+//     }
+//   };
 
-    try {
-      const res = (await addAcademicSemesters(semesterData)) as TResponse;
-      if (res.error) {
-        toast.error(res.error.data.message, { id: toastId });
-      } else {
-        toast.success("Semester Created", { id: toastId });
-      }
-    } catch (err) {
-      toast.error("Something went wrong", { id: toastId });
-    }
-  };
+//   return (
+//     <Flex justify="center" align="center">
+//       <Col span={6}>
+//         <PHForm onSubmit={onSubmit}>
+//           <PHInput type="text" label="Name" name="name" />
 
-  return (
-    <Flex justify="center" align="center">
-      <Col span={6}>
-        <PHForm
-          onSubmit={onSubmit}
-          resolver={zodResolver(academicSemesterSchema)}
-        >
-          <PHSelect label="Name" name="name" options={nameOptions} />
+//           <PHInput type="text" label="Brand" name="brand" />
 
-          <PHSelect label="Year" name="year" options={yearOptions} />
-          <PHSelect
-            label="Start Month"
-            name="startMonth"
-            options={monthOptions}
-          />
-          <PHSelect label="End Month" name="endMonth" options={monthOptions} />
-          <Button htmlType="submit">Submit</Button>
-        </PHForm>
-      </Col>
-    </Flex>
-  );
-};
+//           <PHInput type="text" label="Model" name="model" />
+//           <PHInput type="number" label="Price" name="price" />
 
-export default CreateBike;
+//           <PHInput type="text" label="Description" name="description" />
+
+//           <PHSelect
+//             label="Category"
+//             name="category"
+//             options={categoriesOptions}
+//           />
+//           <PHInput type="number" label="Quantity" name="quantity" />
+
+//           <PHInput label="Availability" name="inStock" type="checkbox" />
+
+//           <Button htmlType="submit">Submit</Button>
+//         </PHForm>
+//       </Col>
+//     </Flex>
+//   );
+// };
+
+// export default CreateBike;

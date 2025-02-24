@@ -1,9 +1,20 @@
 import { FaBars } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 const Navbar = () => {
-  // const { user, logOut } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const user = useAppSelector(selectCurrentUser);
+
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  console.log(user);
 
   const navlinksBeforeLogin = (
     <>
@@ -73,7 +84,7 @@ const Navbar = () => {
 
       <li className="">
         <NavLink
-          to="/allJobs"
+          to="/all-products"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
@@ -103,16 +114,9 @@ const Navbar = () => {
     </>
   );
 
-  // const handleLogOut = () => {
-  //   logOut();
-  //   navigate("/");
-  // };
-
-  const user = null;
-
   return (
     <>
-      <div className=" py-4 flex lg:flex-row flex-row-reverse  justify-between border-b-[2px] border-[#FF5CA4] pb-5 mb-5">
+      <div className=" py-4 flex lg:flex-row flex-row-reverse  justify-between   ">
         <div className="flex  items-center gap-2">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" lg:hidden">
@@ -153,12 +157,12 @@ const Navbar = () => {
                   className="btn btn-ghost  btn-circle avatar"
                 >
                   <div className="w-[40px] rounded-full text-white">
-                    <img src={user?.photoURL} alt={user?.displayName} />
+                    <img src={user?.img} alt={user?.name} />
                   </div>
                 </label>
                 <div>
                   <button
-                    // onClick={handleLogOut}
+                    onClick={handleLogout}
                     className="text-sm flex items-center gap-1 font-Inter font-semibold  text-[#E9155B]"
                   >
                     Logout{" "}
@@ -172,10 +176,13 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-[150px] p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">{user?.displayName}</a>
+                  <a className="justify-between">{user?.name}</a>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="justify-between">
+                  <Link
+                    to={`/${user.role}/overview-dashboard`}
+                    className="justify-between"
+                  >
                     Dashboard
                   </Link>
                 </li>

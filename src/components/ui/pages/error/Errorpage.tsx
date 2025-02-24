@@ -13,7 +13,7 @@ const ErrorPage = () => {
         </h1>
         <NavLink to="/">
           <div className="flex justify-center">
-            <button className="ml-2 lg:ml-4 hover:bg-[#C90044] bg-[#E9155B] px-7 py-2.5 transition-all text-white font-Inter duration-300   rounded">
+            <button className="ml-2 lg:ml-4 hover:bg-[#C90044] bg-[#E9155B] px-7 py-2.5 transition-all text-white  duration-300   rounded">
               Go Home
             </button>
           </div>

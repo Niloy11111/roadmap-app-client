@@ -2,7 +2,8 @@ import { Layout, Menu } from "antd";
 import { TUser, useCurrentToken } from "../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../redux/hooks";
 import { adminPaths } from "../../routes/admin.routes";
-import { studentPaths } from "../../routes/customer.routes";
+
+import { customerPaths } from "../../routes/customer.routes";
 import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import { verifyToken } from "../../utils/verifyToken";
 
@@ -30,7 +31,7 @@ const Sidebar = () => {
       break;
 
     case userRole.STUDENT:
-      sidebarItems = sidebarItemsGenerator(studentPaths, userRole.STUDENT);
+      sidebarItems = sidebarItemsGenerator(customerPaths, userRole.STUDENT);
       break;
 
     default:
@@ -48,13 +49,14 @@ const Sidebar = () => {
           alignItems: "center",
         }}
       >
-        Ph Uni.
+        Bike Shop
       </div>
       <Menu
-        theme="dark"
+        theme="light" // Use light theme for white background
         mode="inline"
         defaultSelectedKeys={["4"]}
         items={sidebarItems}
+        style={{ backgroundColor: "#1a1a1a", color: "black" }} // White background for menu
       />
     </Sider>
   );

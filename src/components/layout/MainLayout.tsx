@@ -11,27 +11,43 @@ const MainLayout = () => {
     dispatch(logout());
   };
   return (
-    <Layout style={{ height: "100vh" }}>
-      <Sidebar />
-      <Layout>
-        <Header>
-          <Button onClick={handleLogout}>Logout</Button>
-          <Link to="/">
-            <Button className="ant-button">Go Home</Button>
-          </Link>
-        </Header>
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div
+    <div className="font-Inter text-5xl">
+      <Layout
+        style={{
+          height: "100vh",
+
+          overflow: "hidden",
+        }}
+      >
+        <Sidebar />
+        <Layout>
+          <Header style={{ backgroundColor: "#1a1a1a", color: "black" }}>
+            <Button className="hoverButton" onClick={handleLogout}>
+              Logout
+            </Button>
+            <Link to="/">
+              <Button className="ant-button hoverButton">Go Home</Button>
+            </Link>
+          </Header>
+          <Content
             style={{
-              padding: 24,
-              minHeight: 360,
+              margin: "24px 16px 0",
+              overflow: "auto",
+              height: "calc(100vh - 64px)",
             }}
           >
-            <Outlet />
-          </div>
-        </Content>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360,
+              }}
+            >
+              <Outlet />
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BsSearch } from "react-icons/bs";
 import { TSlides } from "../../../types";
 
 interface BannerSliderProps {
@@ -54,61 +53,10 @@ const BannerSlider = ({ slides }: BannerSliderProps) => {
         style={{
           backgroundImage: `url(${slides[currentIndex].url}`,
         }}
-        className="mt-10 w-full h-full bg-contain
+        className=" mt-10 w-full h-full bg-cover
          bg-no-repeat bg-center
          rounded-xl "
-      >
-        <div
-          style={{
-            backgroundColor: "rgba(11, 11, 11, 0.50)",
-          }}
-          className="rounded-xl flex justify-center items-center h-full  "
-        >
-          <div className="    ">
-            <h2 className="text-white uppercase mt-5 text-4xl font-bold font-Inter slide text-center">
-              Experience Driving Beyond <br />
-              Your Expectations
-            </h2>
-            <div className="mx-auto  mt-5 border-2 flex rounded py-1   bg-[#FFF]  w-[300px] md:w-[300px] lg:w-[470px] border-[#C9F620]">
-              <button
-                type="submit"
-                className=" flex items-center justify-center w-[50px] h-[40px] rounded-full ml-2 text-lg font-semibold text-[#333F]"
-              >
-                {" "}
-                <BsSearch></BsSearch>
-              </button>
-              <input
-                name="category"
-                id="field-id"
-                className="pl-1 outline-none w-full rounded"
-                type="text"
-                placeholder="Search for your favourite cars"
-              />
-            </div>
-
-            <div className="flex gap-6 mt-10">
-              <div className="bg-white w-[90px] rounded">
-                <img src="https://i.ibb.co/xL3hR5R/tesla-logo.webp"></img>
-              </div>
-              <div className="bg-white w-[90px] rounded">
-                <img src="https://i.ibb.co/0ssVz0t/mercedes-benz-logo.webp"></img>
-              </div>
-              <div className="bg-white w-[90px] rounded">
-                <img src="https://i.ibb.co/9ZZS17j/bmw-logo.webp"></img>
-              </div>
-              <div className="bg-white w-[90px] rounded">
-                <img src="https://www.carlogos.org/car-logos/ford-logo.png"></img>
-              </div>
-              <div className="bg-white w-[90px] rounded">
-                <img src="https://i.ibb.co/gJd47dF/honda-logo.webp"></img>
-              </div>
-              <div className="bg-white w-[90px] rounded">
-                <img src="https://i.ibb.co/Gpp5b0Q/toyota-logo.webp"></img>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      ></div>
 
       <div className="flex cursor-pointer  gap-2 mt-6  ">
         {slides.map((slide, slideIndex) => (

@@ -4,7 +4,7 @@ import BannerSlider from "./BannerSlider";
 const Banner = () => {
   return (
     <>
-      <div className="w-full h-[750px] mx-auto  ">
+      <div className="w-full h-[680px] mx-auto  ">
         <BannerSlider slides={slides}> </BannerSlider>
       </div>
     </>

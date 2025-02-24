@@ -1,22 +1,15 @@
-import AllBikes from "../pages/admin/academicManagement/AllBikes";
-import CreateBike from "../pages/admin/academicManagement/CreateBike";
-import AdminDashboard from "../pages/admin/AdminDashboard";
-import Courses from "../pages/admin/courseManagement/Courses";
-import CreateCourse from "../pages/admin/courseManagement/CreateCourse";
-import OfferCourse from "../pages/admin/courseManagement/OffereCourse";
-import RegisteredSemesters from "../pages/admin/courseManagement/RegesteredSemesters";
-import OrderLists from "../pages/admin/orderManagemnt/OrderLists";
-import CreateAdmin from "../pages/admin/userManagement/CreateAdmin";
-import CreateFaculty from "../pages/admin/userManagement/CreateFaculty";
-import CreateStudent from "../pages/admin/userManagement/CreateStudent";
-import StudentDetails from "../pages/admin/userManagement/studentDetails";
+import AllOrders from "../pages/admin/orderManagemnt/AllOrders";
+import AllProducts from "../pages/admin/productManagement/AllProducts";
+import CreateBike from "../pages/admin/productManagement/CreateBike";
+
 import UserData from "../pages/admin/userManagement/UserData";
+import DashboardUserProfile from "../pages/dashboardUserProfile/DashboardUserProfile";
 
 export const adminPaths = [
   {
     name: "Profile",
     path: "profile",
-    element: <AdminDashboard />,
+    element: <DashboardUserProfile />,
   },
 
   {
@@ -28,53 +21,19 @@ export const adminPaths = [
         element: <CreateBike />,
       },
       {
-        name: "All Bikes",
-        path: "all-bikes",
-        element: <AllBikes />,
+        name: "All Products",
+        path: "all-products",
+        element: <AllProducts />,
       },
-      // {
-      //   name: "Academic Faculty",
-      //   path: "academic-faculty",
-      //   element: <AcademicFaculty />,
-      // },
-      // {
-      //   name: "Create A. Department",
-      //   path: "create-academic-department",
-      //   element: <CreateAcademicDepartment />,
-      // },
-      // {
-      //   name: "Academic Department",
-      //   path: "academic-department",
-      //   element: <AcademicDepartment />,
-      // },
     ],
   },
   {
     name: "User Management",
     children: [
       {
-        name: "Create Student",
-        path: "create-student",
-        element: <CreateStudent />,
-      },
-      {
         name: "User Lists",
         path: "user-lists",
         element: <UserData />,
-      },
-      {
-        path: "student-data/:studentId",
-        element: <StudentDetails />,
-      },
-      {
-        name: "Create Admin",
-        path: "create-admin",
-        element: <CreateAdmin />,
-      },
-      {
-        name: "Create Faculty",
-        path: "create-faculty",
-        element: <CreateFaculty />,
       },
     ],
   },
@@ -82,35 +41,10 @@ export const adminPaths = [
     name: "Order Management",
     children: [
       {
-        name: "Order Lists",
-        path: "order-lists",
-        element: <OrderLists />,
+        name: "Manage Orders",
+        path: "manage-orders",
+        element: <AllOrders />,
       },
-      {
-        name: "Registered Semesters",
-        path: "registered-semesters",
-        element: <RegisteredSemesters />,
-      },
-      {
-        name: "Create Course",
-        path: "create-course",
-        element: <CreateCourse />,
-      },
-      {
-        name: "Courses",
-        path: "courses",
-        element: <Courses />,
-      },
-      {
-        name: "Offer Course",
-        path: "offer-course",
-        element: <OfferCourse />,
-      },
-      // {
-      //   name: 'Offered Courses',
-      //   path: 'offered-courses',
-      //   element: <OfferedCourse />,
-      // },
     ],
   },
 ];
