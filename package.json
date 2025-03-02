@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"fix updating order issue\" && git push"
+    "commit": "git add . && git commit -m \"organized the readme file with prope instructions\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
