@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"done final part\" && git push"
+    "commit": "git add . && git commit -m \"hosted in netlify\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
