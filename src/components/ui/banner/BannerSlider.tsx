@@ -25,7 +25,7 @@ const BannerSlider = ({ slides }: BannerSliderProps) => {
   };
 
   return (
-    <div className="h-[60vh] relative ">
+    <div className="h-[40vh] lg:h-[60vh] relative ">
       <div
         className="bg-white transition-all duration-300 p-2 rounded-full absolute top-[50%] translate-x-[0%]
         
@@ -58,7 +58,7 @@ const BannerSlider = ({ slides }: BannerSliderProps) => {
          rounded-xl "
       ></div>
 
-      <div className="flex cursor-pointer  gap-2 mt-6  ">
+      <div className="lg:flex hidden cursor-pointer  gap-2 mt-6  ">
         {slides.map((slide, slideIndex) => (
           <div
             className="border border-[#7CFAC6]"

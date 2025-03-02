@@ -31,6 +31,8 @@ const AllProducts = () => {
     isFetching,
   } = useGetAllProductsQuery(params);
 
+  console.log("here", isLoading);
+
   const tableData = bikeData?.data?.map(
     ({
       _id,
@@ -326,8 +328,8 @@ const AllProducts = () => {
     }
   };
 
-  if (isLoading) {
-    return <p>Loading..</p>;
+  if (isLoading || isFetching || !bikeData?.data) {
+    return <div className="loader  ">Loading...</div>; // Handle loading or missing data case
   }
 
   return (

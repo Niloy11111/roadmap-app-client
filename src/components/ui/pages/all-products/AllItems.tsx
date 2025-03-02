@@ -1,4 +1,5 @@
 import { Button, Select } from "antd";
+import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsSearch } from "react-icons/bs";
@@ -8,6 +9,7 @@ import { TQueryParam } from "../../../../types";
 import SingleProductItems from "./SingleProductItem";
 
 const AllItems = () => {
+  const [openFilter, setOpenFilter] = useState(false);
   const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
   const { register, handleSubmit, reset } = useForm();
 
@@ -53,10 +55,22 @@ const AllItems = () => {
   };
 
   return (
-    <div className="my-20">
-      all items
-      <div className="flex gap-10">
-        <div className="w-[300px]">
+    <div className={`mt-10 mb-20 `}>
+      <div
+        onClick={() => setOpenFilter(!openFilter)}
+        className="my-5 cursor-pointer"
+      >
+        <h1 className="flex  items-center justify-between  lg:hidden bg-[#1a1a1a] text-white p-4">
+          SHOW FILTER {openFilter ? <Minus /> : <Plus />}
+        </h1>
+      </div>
+      <h1 className="text-2xl smHidden font-bold mb-3"> All Products</h1>
+      <div className="flex lg:flex-row flex-col gap-10">
+        <div
+          className={`${
+            openFilter ? "lg:w-[300px] lg:block" : "hidden lg:block"
+          } lg:w-[300px]`}
+        >
           <div className="border-2 border-b1  py-2 px-2 uppercase font-semibold">
             Shop by Price
           </div>
@@ -127,8 +141,8 @@ const AllItems = () => {
 
         <div>
           <div>
-            <form onSubmit={handleSubmit(onSubmit)} className="  " action="">
-              <div className="  w-[280px] lg:w-[350px]    flex gap-2 rounded-lg ">
+            <form onSubmit={handleSubmit(onSubmit)} className="" action="">
+              <div className="mb-5  w-full lg:w-[350px]    flex gap-2 rounded-lg ">
                 <input
                   {...register("searchTerm", { required: true })}
                   name="searchTerm"
@@ -157,14 +171,18 @@ const AllItems = () => {
               </div>
             </form>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
-            {bikeData?.data?.map((item) => (
-              <SingleProductItems
-                item={item}
-                key={item._id}
-              ></SingleProductItems>
-            ))}
-          </div>
+          {isLoading || isFetching || !bikeData?.data ? (
+            <div className="loader ml-40 ">Loading...</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
+              {bikeData?.data?.map((item) => (
+                <SingleProductItems
+                  item={item}
+                  key={item._id}
+                ></SingleProductItems>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

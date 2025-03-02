@@ -3,8 +3,8 @@ import DashboardUserProfile from "../pages/dashboardUserProfile/DashboardUserPro
 
 export const customerPaths = [
   {
-    name: "Profile",
-    path: "profile",
+    name: "My Profile",
+    path: "my-profile",
     element: <DashboardUserProfile />,
   },
 

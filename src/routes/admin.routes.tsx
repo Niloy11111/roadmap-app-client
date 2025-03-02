@@ -7,8 +7,8 @@ import DashboardUserProfile from "../pages/dashboardUserProfile/DashboardUserPro
 
 export const adminPaths = [
   {
-    name: "Profile",
-    path: "profile",
+    name: "My Profile",
+    path: "my-profile",
     element: <DashboardUserProfile />,
   },
 

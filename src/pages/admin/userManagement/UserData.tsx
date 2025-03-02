@@ -260,8 +260,12 @@ const userData = () => {
     }
   };
 
-  if (isLoading) {
-    return <p>Loading..</p>;
+  if (isLoading || isFetching) {
+    return (
+      <div className="h-[100vh]">
+        <div className="loader ">Loading...</div>;
+      </div>
+    ); // Handle loading or missing data case
   }
 
   return (

@@ -12,7 +12,6 @@ const List = ({ orders, orderIsLoading }) => {
     return "Loading";
   }
 
-  console.log("now", orders);
   const orderData =
     orders
       ?.map((order) => ({

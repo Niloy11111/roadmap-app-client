@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"design all the page in dashboard for better view\" && git push"
+    "commit": "git add . && git commit -m \"done final code\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
@@ -21,6 +21,7 @@
     "@mui/styled-engine-sc": "^6.4.3",
     "@mui/styles": "^6.4.5",
     "@mui/system": "^6.4.3",
+    "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "@reduxjs/toolkit": "^2.5.0",
     "@tailwindcss/vite": "^4.0.3",

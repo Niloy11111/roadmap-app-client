@@ -20,11 +20,21 @@ function App() {
         components: {
           Input: {
             activeBorderColor: "black", // Border color when input is focused
+            colorBgContainer: "#fff",
+          },
+
+          DatePicker: {
+            activeBorderColor: "black", // Black border when clicked
+            colorBgContainer: "#fff", // Background remains white
+            colorBorder: "#fff", // Default white border before active
           },
           Button: {
             colorText: "#000", // Default button text color
             colorPrimaryHover: "black",
+            colorPrimary: "black",
+            colorBgTextHover: "#f0f0f0",
           },
+
           Checkbox: {
             colorPrimary: "black",
             colorText: "#000", // Default button text color

@@ -73,13 +73,10 @@ export const slides = [
     url: "https://jettyroadcycles.com.au/cdn/shop/files/Black_White_and_Yellow_Modern_Special_Big_Sale_Banner_1280x.jpg?v=1731561182",
     title: "car-4",
   },
-  {
-    url: "https://i.ibb.co.com/rKHsBJLn/Screenshot-2025-02-11-134639.png",
-    title: "car-5",
-  },
+
   {
     url: "https://www.shutterstock.com/image-photo/e-bike-austria-rental-ebike-600nw-2039878520.jpg",
-    title: "car-6",
+    title: "car-5",
   },
 ];
 

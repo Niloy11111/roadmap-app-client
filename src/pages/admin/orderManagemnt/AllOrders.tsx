@@ -24,6 +24,7 @@ import {
   useUpdateOrderMutation,
 } from "../../../redux/features/admin/orderManagement.api";
 import { useAppSelector } from "../../../redux/hooks";
+import { TOrdersData } from "../../../types/orderManagement.type";
 
 export interface Transaction {
   id: string;
@@ -59,10 +60,10 @@ export default function AllOrders() {
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const user = useAppSelector(selectCurrentUser);
-  const { isLoading, data } = useGetOrdersQuery(undefined, {
+  const { isLoading, data: orders } = useGetOrdersQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
-  const orderData: Order[] = data?.data;
+  const orderData: TOrdersData[] = orders?.data?.ordersData;
 
   const [deleteOrder] = useDeleteOrderMutation();
   const [updateOrder] = useUpdateOrderMutation();
@@ -186,10 +187,7 @@ export default function AllOrders() {
                       <Col span={24}>
                         {" "}
                         {/* Expand to full width */}
-                        <PHForm
-                          onSubmit={onSubmit}
-                          defaultValues={defaultValues}
-                        >
+                        <PHForm onSubmit={onSubmit}>
                           <PHSelect
                             label="Status"
                             name="status"

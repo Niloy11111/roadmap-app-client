@@ -39,6 +39,13 @@
   border-radius: 4px;
 }
 
+/* 
+ant desing select hover black border thin */
+.ant-select-focused .ant-select-selector {
+  border-width: 1px !important; /* Set normal border width */
+  border-color: black !important; /* Ensure the border color stays black */
+}
+
 .dashboard-global {
   box-sizing: border-box;
   margin: 0;
@@ -57,6 +64,8 @@
   border-radius: 10px;
   background: linear-gradient(90deg, #151515 0%, rgba(21, 21, 21, 0) 100%),
     url("https://asset.scott-sports.com/sco/sco-bike-wide-banner-patron-021224_2195388.jpg?signature=c656917f811cd8e7587c9b95ea38b54357c56e5ad21d287a613676567d316afe");
+  background-position: right 0px; /* Ensures the right side is prioritized */
+  background-size: cover;
 }
 
 .dashboard_overview_title {
@@ -81,4 +90,199 @@
   color: white;
   border-radius: 8px;
   background: linear-gradient(90deg, #333333 0%, #ffffff 100%);
+}
+
+.bannerTitle {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .bannerTitle {
+    font-size: 120px;
+    line-height: 130px;
+  }
+}
+
+.regularTitle {
+  font-size: 30px;
+  line-height: 48px;
+}
+
+@media (min-width: 1024px) {
+  .regularTitle {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+
+.customShadow {
+  box-shadow: 0px 0px 13.64px 0px #0000001a;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.subTitleCard {
+  font-family: Inter, sans-serif;
+  text-align: center;
+}
+
+.subTitle {
+  font-family: Inter, sans-serif;
+  font-size: 1.125rem;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .subTitle {
+    font-size: 1.25rem;
+  }
+}
+
+.btnRegular {
+  background-color: var(--color-b1);
+  color: white;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.btnRegularTwo {
+  background-color: var(--color-b1);
+  color: white;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.btnCarousel {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--custom-shadow);
+}
+
+@media (min-width: 1024px) {
+  .btnCarousel {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.btnTabActive {
+  background-color: var(--color-p1);
+  width: 100%;
+  font-weight: 500;
+  padding: 6px 12px;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .btnTabActive {
+    max-width: max-content;
+  }
+}
+
+.btnTabInActive {
+  font-weight: 500;
+  width: 100%;
+  padding: 6px 12px;
+  color: var(--color-d1);
+}
+
+@media (min-width: 1024px) {
+  .btnTabInActive {
+    max-width: max-content;
+  }
+}
+
+.customWidth {
+  width: 330px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .customWidth {
+    width: 1320px;
+  }
+}
+
+.addFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addFlexItems {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.addFlexJustify {
+  display: flex;
+  justify-content: center;
+}
+
+.addFlexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textInput {
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  padding-left: 12px;
+  background: transparent;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.lgRow {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .lgRow {
+    flex-direction: row;
+  }
+}
+
+.smHidden {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .smHidden {
+    display: block;
+  }
+}
+
+.lgHidden {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .lgHidden {
+    display: none;
+  }
 }

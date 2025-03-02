@@ -6,7 +6,11 @@ const BikeDetails = () => {
   const { data: bikeData, isLoading, isFetching } = useGetProductByIdQuery(id);
 
   if (isLoading || isFetching || !bikeData?.data) {
-    return <p>Loading...</p>; // Handle loading or missing data case
+    return (
+      <div className="h-[100vh]">
+        <div className="loader ">Loading...</div>;
+      </div>
+    ); // Handle loading or missing data case
   }
 
   const {
@@ -28,23 +32,25 @@ const BikeDetails = () => {
 
   console.log(inStock);
 
+  const result = true;
+
   return (
     <div className="mt-[50px] mb-[130px]">
       <div
-        className="mb-[130px] relative detailsBg  w-full h-[45vh] 
-         bg-no-repeat bg  bg-cover
-         rounded-xl flex items-center"
+        className="mb-16 lg:mb-[130px] relative detailsBg  w-full h-[30vh] lg:h-[45vh] 
+         bg-no-repeat 
+         rounded-xl flex items-center "
       >
-        <h1 className="ml-[100px] text-[45px] font-bold text-white">
+        <h1 className="ml-5 lg:ml-[100px] text-[40px] lg:text-[45px] font-bold text-white">
           Bike Details
         </h1>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 font-medium text-[20px]">
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2  w-full lg:max-w-[296px] max-w-[200px]">
           <svg
+            className="w-full h-auto"
             xmlns="http://www.w3.org/2000/svg"
-            width="296"
-            height="50"
             viewBox="0 0 296 50"
             fill="none"
+            preserveAspectRatio="none"
           >
             <path d="M296 49.3H0L27.8 0H268.3L296 49.3Z" fill="#FF3811" />
             <text
@@ -53,7 +59,7 @@ const BikeDetails = () => {
               textAnchor="middle"
               dy=".3em"
               fill="white"
-              font-size="16"
+              fontSize="16"
             >
               Home/Bike Details
             </text>
@@ -61,7 +67,7 @@ const BikeDetails = () => {
         </div>
       </div>
 
-      <div className="flex gap-6">
+      <div className="flex lg:flex-row flex-col gap-6">
         <div className="flex-1">
           <img className="h-[400px] w-full" src={photoURL} alt="" />
 

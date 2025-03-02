@@ -10,6 +10,7 @@ import Homepage from "../components/ui/pages/home/Homepage";
 import OrderVerification from "../components/ui/pages/verifyOrder/Verifyorder";
 import ChangePassword from "../pages/customer/ChangePassword";
 
+import About from "../components/ui/pages/about/About";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import { routeGenerator } from "../utils/routesGenerator";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/all-products",
         element: <AllItems />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/details/:id",

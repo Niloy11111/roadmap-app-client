@@ -30,7 +30,9 @@ const Checkout = () => {
       }
     }
 
-    if (isError) toast.error(JSON.stringify(error), { id: toastId });
+    if (isError) {
+      toast.error(JSON.stringify(error?.data?.message), { id: toastId });
+    }
   }, [data?.data, data?.message, error, isError, orderIsLoading, isSuccess]);
 
   if (isLoading || isFetching || !bikeData?.data) {
@@ -73,8 +75,8 @@ const Checkout = () => {
         </h1>
       </div>
 
-      <div className="mt-10 flex justify-between">
-        <div className="flex gap-5">
+      <div className="my-16 flex lg:flex-row flex-col gap-12 justify-between">
+        <div className="flex lg:flex-row flex-col gap-5">
           <div>
             <img
               className="border border-b2 w-[550px] h-[390px]"

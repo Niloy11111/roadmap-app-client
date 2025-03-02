@@ -17,7 +17,7 @@ const SingleProductItem = ({ item }) => {
   } = item;
 
   return (
-    <div className="hover:shadow-xl transition-all duration-500 p-4 relative">
+    <div className="border border-b2 rounded-xl hover:shadow-xl transition-all duration-500 p-4 relative">
       {inStock === false ? (
         <button className="bg-p1 w-[130px] h-[45px] rounded-l-full absolute right-0 text-white">
           <p className="font-semibold">Stock Out</p>

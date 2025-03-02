@@ -25,6 +25,7 @@ export type TRevenueData = {
 };
 
 export type TOrder = {
+  todaySales: number;
   ordersData: TOrdersData[];
   revenueData: TRevenueData[];
 };

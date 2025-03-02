@@ -3,7 +3,7 @@ import { Content, Header } from "antd/es/layout/layout";
 import { Link, Outlet } from "react-router-dom";
 import { logout } from "../../redux/features/auth/authSlice";
 import { useAppDispatch } from "../../redux/hooks";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 const MainLayout = () => {
   const dispatch = useAppDispatch();
@@ -22,9 +22,6 @@ const MainLayout = () => {
         <Sidebar />
         <Layout>
           <Header style={{ backgroundColor: "#1a1a1a", color: "black" }}>
-            <Button className="hoverButton" onClick={handleLogout}>
-              Logout
-            </Button>
             <Link to="/">
               <Button className="ant-button hoverButton">Go Home</Button>
             </Link>

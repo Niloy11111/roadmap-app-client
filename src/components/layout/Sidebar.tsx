@@ -1,8 +1,8 @@
 import { Layout, Menu } from "antd";
 import { TUser, useCurrentToken } from "../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../redux/hooks";
-import { adminPaths } from "../../routes/admin.routes";
 
+import { adminPaths } from "../../routes/admin.routes";
 import { customerPaths } from "../../routes/customer.routes";
 import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import { verifyToken } from "../../utils/verifyToken";
@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   const userRole = {
     ADMIN: "admin",
-    STUDENT: "customer",
+    CUSTOMER: "customer",
   };
 
   let sidebarItems;
@@ -29,9 +29,8 @@ const Sidebar = () => {
     case userRole.ADMIN:
       sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
       break;
-
-    case userRole.STUDENT:
-      sidebarItems = sidebarItemsGenerator(customerPaths, userRole.STUDENT);
+    case userRole.CUSTOMER:
+      sidebarItems = sidebarItemsGenerator(customerPaths, userRole.CUSTOMER);
       break;
 
     default:
@@ -49,14 +48,22 @@ const Sidebar = () => {
           alignItems: "center",
         }}
       >
-        Bike Shop
+        <div className="flex items-center gap-2">
+          <img
+            className="w-[50px] lg:w-[50px]"
+            src="https://i.ibb.co.com/tMxXTP6M/download-1.png"
+          ></img>
+          <h2 className="text-xl hidden lg:block font-extrabold font-Inter">
+            {" "}
+            BikeBari
+          </h2>
+        </div>
       </div>
       <Menu
-        theme="light" // Use light theme for white background
+        theme="light"
         mode="inline"
         defaultSelectedKeys={["4"]}
         items={sidebarItems}
-        style={{ backgroundColor: "#1a1a1a", color: "black" }} // White background for menu
       />
     </Sider>
   );

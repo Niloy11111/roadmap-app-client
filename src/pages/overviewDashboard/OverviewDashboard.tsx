@@ -29,6 +29,7 @@ const OverviewDashboard = () => {
 
   const orderData = orders?.data?.ordersData;
   const revenueData = orders?.data?.revenueData;
+  const todaySales = orders?.data?.todaySales;
   const revenue = orderData?.reduce((acc, item) => acc + item.totalPrice, 0);
 
   console.log("revenueData", revenueData);
@@ -37,13 +38,26 @@ const OverviewDashboard = () => {
     return num < 10 ? `0${num}` : num < 100 ? `${num}` : `${num}`;
   };
 
-  const categoriesOrders = orderData?.map((item) => ({
-    products: item.products[0],
-    monthName:
-      new Date(item.createdAt).toLocaleString("default", { month: "long" }) +
-      new Date(item.createdAt).getFullYear(),
-    createdAt: item.createdAt,
-  }));
+  // const categoriesOrders = orderData?.map((item) => ({
+  //   products: item.products[0],
+  //   monthName:
+  //     new Date(item.createdAt).toLocaleString("default", { month: "long" }) +
+  //     new Date(item.createdAt).getFullYear(),
+  //   createdAt: item.createdAt,
+  // }));
+
+  // const todaySales = categoriesOrders
+  //   ?.filter((item) => {
+  //     const createdAt = new Date(item.createdAt);
+  //     const today = new Date();
+
+  //     return (
+  //       createdAt.getDate() === today.getDate() &&
+  //       createdAt.getMonth() === today.getMonth() &&
+  //       createdAt.getFullYear() === today.getFullYear()
+  //     );
+  //   })
+  //   .reduce((total, item) => total + item.products.price, 0);
 
   // const revenueData = categoriesOrders?.reduce((acc, item) => {
   //   const { monthName, products } = item;
@@ -60,19 +74,6 @@ const OverviewDashboard = () => {
 
   //   return acc;
   // }, []);
-
-  const todaySales = categoriesOrders
-    ?.filter((item) => {
-      const createdAt = new Date(item.createdAt);
-      const today = new Date();
-
-      return (
-        createdAt.getDate() === today.getDate() &&
-        createdAt.getMonth() === today.getMonth() &&
-        createdAt.getFullYear() === today.getFullYear()
-      );
-    })
-    .reduce((total, item) => total + item.products.price, 0);
 
   // Assuming price is inside products[0]
 
