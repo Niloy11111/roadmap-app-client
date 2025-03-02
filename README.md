@@ -12,7 +12,7 @@ add credentials true here and add   credentials: "include" in your createApi fun
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1",
+    baseUrl: "https://bike-shop-server-beta.vercel.app/api/v1",
     credentials: "include", // this is to get cookies from backend
   }),
   endpoints: () => ({}),
