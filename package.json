@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"hosted in netlify\" && git push"
+    "commit": "git add . && git commit -m \"added favicon\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
@@ -34,6 +34,7 @@
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.3.1",
+    "react-favicon": "^2.0.7",
     "react-feather": "^2.0.10",
     "react-hook-form": "^7.54.2",
     "react-icons": "^5.4.0",
