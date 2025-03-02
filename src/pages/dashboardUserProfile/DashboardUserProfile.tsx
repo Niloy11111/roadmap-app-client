@@ -52,7 +52,7 @@ const DashboardUserProfile = () => {
 
   const customerExpenseData = orders?.data?.customerExpenseData;
 
-  const expenseData = customerExpenseData.find(
+  const expenseData = customerExpenseData?.find(
     (item) => item.userId === user._id
   );
 

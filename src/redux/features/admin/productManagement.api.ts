@@ -1,8 +1,5 @@
 import { TQueryParam, TResponseRedux } from "../../../types";
-import {
-  TAcademicFaculty,
-  TProduct,
-} from "../../../types/productManagement.type";
+import { TProduct } from "../../../types/productManagement.type";
 import { baseApi } from "../../api/baseApi";
 
 const productManagementApi = baseApi.injectEndpoints({
@@ -64,17 +61,6 @@ const productManagementApi = baseApi.injectEndpoints({
         method: "DELETE",
       }),
       invalidatesTags: ["product"],
-    }),
-    getAcademicFaculties: builder.query({
-      query: () => {
-        return { url: "/academic-faculties", method: "GET" };
-      },
-      transformResponse: (response: TResponseRedux<TAcademicFaculty[]>) => {
-        return {
-          data: response.data,
-          meta: response.meta,
-        };
-      },
     }),
   }),
 });

@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "buildtsc": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"added favicon\" && git push"
+    "commit": "git add . && git commit -m \"fix updating order issue\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",

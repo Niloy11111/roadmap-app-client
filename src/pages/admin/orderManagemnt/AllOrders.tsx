@@ -82,7 +82,7 @@ export default function AllOrders() {
         toast.error(res.error.data.message, { id: toastId });
       } else {
         toast.success("Product Deleted", { id: toastId });
-        setOpen(false);
+        setOpenDelete(false);
       }
     } catch (err) {
       toast.error("Something went wrong", { id: toastId });
@@ -98,18 +98,17 @@ export default function AllOrders() {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("Creating... ");
-
-    const category = data?.category
-      ?.toLowerCase()
-      .replace(/^./, (c: string) => c.toUpperCase());
+    const toastId = toast.loading("Updating... ");
+    console.log("here", data);
 
     // console.log("createbike", bikeData);
     const updateData = {
       id: orderId,
       data: {
         status: data.status,
-        estimatedDeliveryDate: data.estimatedDeliveryDate,
+        estimatedDeliveryDate: data.estimatedDeliveryDate.format(
+          "M/D/YYYY, h:mm:ss A"
+        ),
       },
     };
 

@@ -18,7 +18,13 @@ const weekdays = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
 export const genders = ["Male", "Female", "Other"];
 export const available = [true, false];
 export const categories = ["Mountain", "Road", "Folding", "Electric"];
-export const statuses = ["Pending", "Processing", "Shipped", "Delivered"];
+export const statuses = [
+  "Pending",
+  "Paid",
+  "Shipped",
+  "Completed",
+  "Cancelled",
+];
 
 export const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
