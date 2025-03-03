@@ -27,10 +27,6 @@ Start the development server with the following command:
 npm run start:dev
 ```
 
-#### Live Deployment Link
-
-[https://bike-store-a2.vercel.app/](https://bike-store-a2.vercel.app/)
-
 ## How to Run Locally
 
 #### Live Deployment Link
