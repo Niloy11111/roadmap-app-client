@@ -33,13 +33,13 @@ npm run dev
 
 [https://bike-bari-6a.netlify.app/](https://bike-bari-6a.netlify.app/)
 
-## admin Credentials to access dashboard admin activities
+### 1. Admin Credentials to access dashboard admin activities
 
-# Admin Email: admin@gmail.com
+#### 1. Admin Email: admin@gmail.com
 
-# Admin Password: secure
+#### 2. Admin Password: secure
 
-## For user access create an user
+### 2. For user access create an user
 
 ## 1. User Roles:
 
@@ -172,5 +172,3 @@ baseUrl = [http://localhost:5000/api/v1]
 ## 12. Performance Optimization:
 
 - Optimize API responses for smooth operation with large data loads.
-
-
