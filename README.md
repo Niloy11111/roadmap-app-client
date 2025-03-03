@@ -31,7 +31,7 @@ npm run start:dev
 
 #### Live Deployment Link
 
-[https://bike-shop-server-beta.vercel.app/](https://bike-shop-server-beta.vercel.app/)
+[https://bike-bari-6a.netlify.app/](https://bike-bari-6a.netlify.app/)
 
 ## 1. User Roles:
 
@@ -165,25 +165,4 @@ baseUrl = [http://localhost:5000/api/v1]
 
 - Optimize API responses for smooth operation with large data loads.
 
-````-->
-to solve cookie problem in client side
-app.use(
-cors({
-origin: ['http://localhost:5173'],
-credentials: true,
-}),
-);
 
-add credentials true here and add credentials: "include" in your createApi function
-export const baseApi = createApi({
-reducerPath: "baseApi",
-baseQuery: fetchBaseQuery({
-baseUrl: "https://bike-shop-server-beta.vercel.app/api/v1",
-credentials: "include", // this is to get cookies from backend
-}),
-endpoints: () => ({}),
-});
-
-```-->
-
-````
