@@ -24,7 +24,7 @@ Start the development server with the following command:
 #### run project
 
 ```
-npm run start:dev
+npm run dev
 ```
 
 ## How to Run Locally
@@ -32,6 +32,14 @@ npm run start:dev
 #### Live Deployment Link
 
 [https://bike-bari-6a.netlify.app/](https://bike-bari-6a.netlify.app/)
+
+## admin Credentials to access dashboard admin activities
+
+# Admin Email: admin@gmail.com
+
+# Admin Password: secure
+
+## For user access create an user
 
 ## 1. User Roles:
 
