@@ -11,7 +11,7 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://bike-shop-server-beta.vercel.app/api/v1",
+  baseUrl: "https://bike-shop-server-two.vercel.app/api/v1",
   credentials: "include", // this is to get cookies from backend,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -44,7 +44,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     // console.log('Sending refresh token')
     // here we need to give full url because we are doing a manual fetch
     const res = await fetch(
-      "https://bike-shop-server-beta.vercel.app/api/v1/auth/refresh-token",
+      "https://bike-shop-server-two.vercel.app/api/v1/auth/refresh-token",
       {
         method: "POST",
         credentials: "include",

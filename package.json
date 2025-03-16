@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"edited \" && git push"
+    "commit": "git add . && git commit -m \"changed server domain \" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
