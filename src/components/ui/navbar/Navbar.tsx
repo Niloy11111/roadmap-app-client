@@ -25,8 +25,8 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "   text-sm transition-all duration-200 bg-[#ff3811b3] text-white   font-Inter rounded  font-semibold py-1 lg:py-2 lg:px-4 "
-              : "text-sm transition-all duration-200 hover:bg-[#ff3811b3]   font-Inter rounded  font-semibold py-1 lg:py-2 lg:px-4"
+              ? "   text-sm rounded-full   transition-all duration-200 text-[#ff3811b3]  font-Inter rounded  font-semibold  "
+              : "text-sm rounded-full  transition-all duration-200 hover:text-[#ff3811b3]   font-Inter rounded  font-semibold "
           }
         >
           Home
@@ -40,8 +40,8 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "   text-sm transition-all duration-200 bg-[#ff3811b3] text-white  font-Inter rounded  font-semibold py-1 lg:py-2 lg:px-4 "
-              : "text-sm transition-all duration-200 hover:bg-[#ff3811b3]   font-Inter rounded  font-semibold py-1 lg:py-2 lg:px-4"
+              ? "   text-sm rounded-full   transition-all duration-200 text-[#ff3811b3]  font-Inter rounded  font-semibold  "
+              : "text-sm rounded-full  transition-all duration-200 hover:text-[#ff3811b3]   font-Inter rounded  font-semibold "
           }
         >
           All Products
@@ -55,8 +55,8 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "   text-sm transition-all duration-200 bg-[#ff3811b3] text-white  font-Inter rounded  font-semibold py-1 lg:py-2 lg:px-4 "
-              : "text-sm transition-all duration-200 hover:bg-[#ff3811b3]   font-Inter rounded  font-semibold py-1 lg:py-2 lg:px-4"
+              ? "   text-sm rounded-full   transition-all duration-200 text-[#ff3811b3]  font-Inter rounded  font-semibold  "
+              : "text-sm rounded-full  transition-all duration-200 hover:text-[#ff3811b3]   font-Inter rounded  font-semibold "
           }
         >
           About
@@ -67,7 +67,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" py-4 flex lg:flex-row flex-row-reverse  justify-between   ">
+      <div className=" -mx-[20%]  px-8 py-6  flex lg:flex-row flex-row-reverse  justify-between   ">
         <div className="flex  items-center gap-2">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" lg:hidden">
@@ -75,7 +75,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-[150px] p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-[150px] p-2 shadow "
             >
               {navLinks}
             </ul>
@@ -93,8 +93,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex  items-center hidden lg:block    p-3 rounded">
-          <ul className=" lg:flex gap-3 ">{navLinks}</ul>
+        <div className="lg:flex bg-blued-200 items-center hidden lg:block  py-3 px-12  rounded-full border border-[#D9D9D9]">
+          <ul className=" lg:flex gap-12">{navLinks}</ul>
         </div>
 
         <div className="">
@@ -145,8 +145,8 @@ const Navbar = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-sm bg-p1 text-white font-Inter rounded  font-semibold py-2 px-4"
-                    : " text-sm hover:bg-p1 bg-p1 text-white  font-Inter rounded  font-semibold py-2 px-4"
+                    ? "text-sm bg-p1 text-white font-Inter rounded-full  font-semibold py-3 px-6"
+                    : " text-sm hover:bg-p1/80 bg-p1 text-white  font-Inter rounded-full  font-semibold py-3 px-6"
                 }
               >
                 Log in

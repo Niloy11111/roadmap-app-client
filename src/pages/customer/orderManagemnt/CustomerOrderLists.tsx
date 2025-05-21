@@ -48,10 +48,10 @@ export default function CustomerOrderLists() {
   return isLoading ? (
     "Loading"
   ) : (
-    <div className="mx-auto  p-10 ">
+    <div className="mx-auto   p-10 ">
       {customerOrders?.map((order, index) => (
         <div
-          className={`grid grid-cols-2 gap-4 border-x border-t p-4 ${
+          className={`grid  grid-cols-2 gap-4 border-x  border-b2 border-t p-4 ${
             index === customerOrders.length - 1 ? "border-b" : ""
           }`}
         >

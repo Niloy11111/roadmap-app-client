@@ -1,10 +1,18 @@
 import Favicon from "react-favicon";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import Navbar from "../ui/navbar/Navbar";
 import Footer from "../ui/pages/home/footer/Footer";
 const RootLayout = () => {
   const { pathname } = useLocation();
-  const hideNavbarPaths = ["/login", "/change-password", "/register"];
+  const { id } = useParams();
+  const hideNavbarPaths = [
+    "/login",
+    "/change-password",
+    "/register",
+    "/all-products",
+    `/details/${id}`,
+    "/about",
+  ];
 
   return (
     <div>

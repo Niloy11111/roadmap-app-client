@@ -8,7 +8,7 @@ const About = () => {
           backgroundImage:
             "url('https://i.ibb.co.com/rKHsBJLn/Screenshot-2025-02-11-134639.png')",
         }}
-        className=" bg-no-repeat  bg-blend-overlay rounded-xl bg-cover lg:h-[70vh] h-[30vh] mt-10 lg:mt-10  flex items-center lg:bg-cover bg-center"
+        className=" bg-no-repeat  bg-blend-overlay  bg-cover lg:h-[70vh] h-[30vh] mx-[-20%]  flex items-center lg:bg-cover bg-center"
       >
         <div className="ml-5 lg:ml-24  ">
           <div className="space-y-6 lg:space-y-5">
@@ -43,10 +43,15 @@ const About = () => {
         </p>
       </section>
 
-      <section className="my-10 flex lg:flex-row flex-col items-center justify-center gap-10">
-        <div>
+      <section className="my-10 flex lg:flex-col flex-col items-center justify-center gap-10">
+        <div className="flex gap-5">
           <img
-            className="w-[500px]"
+            className="w-[500px] rounded-xl"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUn_DrX-peFK8Zv83FG4fFR4tW-G3EHTKGQ&s"
+            alt=""
+          />
+          <img
+            className="w-[500px] rounded-xl"
             src="https://www.sefiles.net/merchant/3379/images/site/slideshow-JC-checkpoint.jpg"
             alt=""
           />
@@ -65,13 +70,13 @@ const About = () => {
         </div>
       </section>
 
-      <section className="contact-info mb-12">
+      <section className=" mx-[-20%]">
         <h2 className="  text-center text-[45px] font-semibold">Contact Us</h2>
 
         <p className="text-center text-d1 mb-4">
           If you have any questions, feel free to get in touch with us:
         </p>
-        <ul className="flex  lg:flex-row flex-col py-10 text-center  justify-center items-center gap-5 bg-p1 text-white text-2xl lg:h-[100px] rounded-xl">
+        <ul className="flex  lg:flex-row flex-col py-10 text-center  justify-center items-center gap-5 bg-p1 text-white text-2xl lg:h-[100px] ">
           <li>
             Email: <a href="mailto:info@bikebari.com">info@bikebari.com</a>
           </li>

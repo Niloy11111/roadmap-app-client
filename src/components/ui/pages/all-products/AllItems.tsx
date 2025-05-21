@@ -71,7 +71,7 @@ const AllItems = () => {
             openFilter ? "lg:w-[300px] lg:block" : "hidden lg:block"
           } lg:w-[300px]`}
         >
-          <div className="border-2 border-b1  py-2 px-2 uppercase font-semibold">
+          <div className="border-2 rounded  border-b1  py-2 px-2 uppercase font-semibold">
             Shop by Price
           </div>
 
@@ -95,7 +95,7 @@ const AllItems = () => {
             ))}
           </div>
 
-          <div className="text-sm mt-5 border-2 border-b1  py-2 px-2 uppercase font-semibold mb-2">
+          <div className="text-sm mt-5 border-2 rounded border-b1  py-2 px-2 uppercase font-semibold mb-2">
             category
           </div>
 
@@ -115,7 +115,7 @@ const AllItems = () => {
               </p>
             ))}
           </div>
-          <div className="text-sm mt-5 border-2 border-b1  py-2 px-2 uppercase font-semibold mb-2">
+          <div className="rounded text-sm mt-5 border-2 border-b1  py-2 px-2 uppercase font-semibold mb-2">
             Model
           </div>
 
@@ -126,7 +126,7 @@ const AllItems = () => {
             onChange={handleChange}
             options={modelOptions}
           />
-          <div className="text-sm mt-5 border-2 border-b1  py-2 px-2 uppercase font-semibold mb-2">
+          <div className="rounded text-sm mt-5 border-2 border-b1  py-2 px-2 uppercase font-semibold mb-2">
             Brand
           </div>
 
@@ -153,7 +153,7 @@ const AllItems = () => {
                     ])
                   }
                   id="field-id"
-                  className="pl-3  rounded-lg  w-full h-[50px] outline-none   "
+                  className="pl-3 border-[#D9D9D9] rounded  w-full h-[50px] outline-none   "
                   type="text"
                   placeholder="Find Bike"
                 />

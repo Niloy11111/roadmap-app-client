@@ -63,7 +63,7 @@ export default function OrderVerification() {
   return isLoading ? (
     <Skeleton />
   ) : (
-    <div className="container mx-auto p-4">
+    <div className="container  mx-auto p-4 my-10">
       <h1 className="text-3xl font-bold mb-6">Order Verification</h1>
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
@@ -157,8 +157,8 @@ export default function OrderVerification() {
             </div>
           </CardContent>
           <CardFooter>
-            <Link to="/order">
-              <Button className="w-full">View Orders</Button>
+            <Link to="/customer/view-orders">
+              <Button className=" w-full">View Orders</Button>
             </Link>
           </CardFooter>
         </Card>
