@@ -1,7 +1,7 @@
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import axios from "axios";
 import { useState } from "react";
 
+import { Upload } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { userInputs } from "../../constants/global";
@@ -53,51 +53,54 @@ const Register = () => {
   };
 
   return (
-    <div className="new flex items-center h-[100vh]">
-      {/* <Sidebar /> */}
-      <div className="newContainer">
-        {/* <Navbar /> */}
-        <div className="top ">
-          <h1 className="!text-d2">User Registration Form</h1>
-        </div>
-        <div className="bottom">
-          <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
+    <div className="w-4/6 mx-auto">
+      <div className=" new flex items-center h-[100vh]">
+        {/* <Sidebar /> */}
+        <div className="newContainer">
+          {/* <Navbar /> */}
+          <div className="top ">
+            <h1 className="!text-d2">User Registration Form</h1>
           </div>
-          <div className="right">
-            <form>
-              <div className="formInput">
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
-                />
-              </div>
-
-              {userInputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
+          <div className="bottom">
+            <div className="left">
+              <img
+                src={
+                  file
+                    ? URL.createObjectURL(file)
+                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                }
+                alt=""
+              />
+            </div>
+            <div className="right">
+              <form>
+                <div className="formInput">
+                  <label htmlFor="file">
+                    Image: <Upload className="icon" />
+                  </label>
                   <input
-                    onChange={handleChange}
-                    type={input.type}
-                    placeholder={input.placeholder}
-                    id={input.id}
+                    type="file"
+                    id="file"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    style={{ display: "none" }}
                   />
                 </div>
-              ))}
-              <button onClick={handleClick}>Send</button>
-            </form>
+
+                {userInputs.map((input) => (
+                  <div className="formInput" key={input.id}>
+                    <label>{input.label}</label>
+                    <input
+                      onChange={handleChange}
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      id={input.id}
+                      className=""
+                    />
+                  </div>
+                ))}
+                <button onClick={handleClick}>Send</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

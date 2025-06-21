@@ -11,7 +11,7 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://bike-shop-server-two.vercel.app/api/v1",
+  baseUrl: "http://localhost:5000/api/v1",
   credentials: "include", // this is to get cookies from backend,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -43,13 +43,10 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     // send Refresh
     // console.log('Sending refresh token')
     // here we need to give full url because we are doing a manual fetch
-    const res = await fetch(
-      "https://bike-shop-server-two.vercel.app/api/v1/auth/refresh-token",
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
+    const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
+      method: "POST",
+      credentials: "include",
+    });
 
     const data = await res.json();
 
@@ -66,6 +63,9 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(logout());
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 300);
     }
   }
   return result;
@@ -74,6 +74,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["product", "order", "user"],
+  tagTypes: ["roadmap", "comment"],
   endpoints: () => ({}),
 });

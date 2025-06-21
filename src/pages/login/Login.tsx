@@ -23,25 +23,6 @@ const Login = () => {
 
   console.log(credentials);
 
-  // const handleClick = async (e) => {
-  //   e.preventDefault();
-  //   dispatch({ type: "LOGIN_START" });
-  //   try {
-  //     const res = await axios.post("/auth/login", credentials);
-  //     if (res.data.isAdmin) {
-  //       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-  //       navigate("/");
-  //     } else {
-  //       dispatch({
-  //         type: "LOGIN_FAILURE",
-  //         payload: { message: "You are not allowed" },
-  //       });
-  //     }
-  //   } catch (err) {
-  //     dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
-  //   }
-  // };
-
   const handleClick = async (e) => {
     e.preventDefault();
     const toastId = toast.loading("Logging in");
@@ -54,12 +35,7 @@ const Login = () => {
 
       dispatch(setUser({ user: res.data.user, token: res.data.accessToken }));
       toast.success("Logged in", { id: toastId, duration: 2000 });
-
-      if (res.data.needsPasswordChange) {
-        navigate(`/change-password`);
-      } else {
-        navigate(`/`);
-      }
+      navigate(`/`);
     } catch (err) {
       toast.error("Something went wrong", { id: toastId, duration: 2000 });
     }
@@ -73,14 +49,14 @@ const Login = () => {
           placeholder="email"
           id="email"
           onChange={handleChange}
-          className="lInput"
+          className="lInput border border-b2 rounded "
         />
         <input
           type="password"
           placeholder="password"
           id="password"
           onChange={handleChange}
-          className="lInput"
+          className="lInput border border-b2 rounded"
         />
         <button onClick={handleClick} className="lButton">
           Login

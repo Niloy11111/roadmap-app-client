@@ -1,16 +1,12 @@
-import Banner from "../../banner/Banner";
-import Featured from "./featured/Featured";
-import Testimonials from "./testimonials/Testimonials";
-import WhyChoose from "./whyChoose/WhyChoose";
+import Banner from "./banner/Banner";
+import Feature from "./feature/Feature";
 
 const Homepage = () => {
   return (
     <div className="">
       <Banner />
-      <Featured />
-      <WhyChoose />
 
-      <Testimonials />
+      <Feature />
     </div>
   );
 };

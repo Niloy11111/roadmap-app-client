@@ -20,9 +20,6 @@ const persistConfig = {
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
-// redux setup video
-// after intial setup in part 1 last video - 26:10
-//  then part2 -- module 27-4
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
@@ -42,11 +39,3 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
-
-// to add baseApi to store we need to add
-/**
- * [baseApi.reducerPath]: baseApi.reducer,
- * middleware: (getDefaultMiddlewares) =>
-    getDefaultMiddlewares().concat(baseApi.middleware),
- these two lines
- * */
