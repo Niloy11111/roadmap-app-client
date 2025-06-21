@@ -58,13 +58,13 @@ const Login = () => {
           onChange={handleChange}
           className="lInput border border-b2 rounded"
         />
-        <button onClick={handleClick} className="lButton">
+        <button onClick={handleClick} className="lButton ">
           Login
         </button>
 
         <p className="mt-2 ">
           Don't have an account?{" "}
-          <Link className="text-[#29b170]" to="/register">
+          <Link className="text-p1 " to="/register">
             Create Account
           </Link>{" "}
         </p>

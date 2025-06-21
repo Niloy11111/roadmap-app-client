@@ -2,7 +2,7 @@
 
 #### Live Deployment Link
 
-[https://Roadmap-bari-6a.netlify.app/](https://Roadmap-bari-6a.netlify.app/)
+[https://roadmap-app-234.netlify.app/](https://roadmap-app-234.netlify.app/)
 
 ## 🔧 Tech Stack
 

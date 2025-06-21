@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \"hide navbar and footer for some pages,edited navbar \" && git push"
+    "commit": "git add . && git commit -m \"fixed some color issues and commiting\" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
