@@ -11,8 +11,8 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
-  // baseUrl: "https://roadmap-app-server-bice.vercel.app/api/v1",
-  baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: "https://roadmap-app-server-bice.vercel.app/api/v1",
+  // baseUrl: "http://localhost:5000/api/v1",
   credentials: "include", // this is to get cookies from backend,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -45,8 +45,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     // console.log('Sending refresh token')
     // here we need to give full url because we are doing a manual fetch
     const res = await fetch(
-      "http://localhost:5000/api/v1/auth/refresh-token",
-      // "https://roadmap-app-server-bice.vercel.app/api/v1/auth/refresh-token",
+      // "http://localhost:5000/api/v1/auth/refresh-token",
+      "https://roadmap-app-server-bice.vercel.app/api/v1/auth/refresh-token",
       {
         method: "POST",
         credentials: "include",

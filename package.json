@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "commit": "git add . && git commit -m \" fixed comment features to let users reply properly and show name whom to reply \" && git push"
+    "commit": "git add . && git commit -m \" given vercel url instead of local \" && git push"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
