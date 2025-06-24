@@ -105,17 +105,17 @@ const Feature = () => {
         <div className="flex items-center ">
           <select
             onChange={(e) => handleSelect(e)}
-            className="rounded-xl py-3 appearance-none  border border-gray-300 px-3   w-[160px]"
+            className="cursor-pointer rounded-xl py-3 appearance-none  border border-gray-300 px-3   w-[150px]"
           >
             <option value="all">All Category</option>
-            <option value="Authentication">Authentication</option>
+            <option value="Authentication">Authentiction</option>
             <option value="Features">Features</option>
             <option value="Security">Security</option>
             <option value="Performance">Performance</option>
             <option value="Admin">Admin</option>
           </select>
           <div>
-            <ChevronDown className="-ml-10" />
+            <ChevronDown className="-ml-9 mt-1" />
           </div>
         </div>
       </div>

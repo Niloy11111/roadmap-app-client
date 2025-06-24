@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 const Banner = () => {
   return (
     <div className="">
-      <div className="font-sans flex  items-center gap-1 bg-[#dadadb] p-2 rounded-full w-[37.5%] mx-auto mt-40">
+      <div className=" flex font-sans items-center gap-1 bg-[#dadadb] p-2 rounded-full w-[37.5%] mx-auto mt-40">
         <button className="text-[10px] bg-p1 text-white p-2 rounded-full">
           New
         </button>

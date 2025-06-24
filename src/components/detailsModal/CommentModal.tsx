@@ -13,6 +13,15 @@ const CommentModal = ({
   payload,
   title,
   setOpen,
+}: {
+  setOpenComment: (value: boolean) => void;
+  openComment: boolean;
+  payload: {
+    user: string | undefined;
+    roadmap: string | undefined;
+  };
+  title: string;
+  setOpen: (value: boolean) => void;
 }) => {
   const [addComment] = useAddCommentMutation();
   const [commentData, setCommentData] = useState("");

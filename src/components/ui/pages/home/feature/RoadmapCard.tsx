@@ -23,6 +23,7 @@ import { useAppSelector } from "../../../../../redux/hooks";
 import { IRoadMap } from "../../../../../types/productManagement.type";
 import CommentModal from "../../../../detailsModal/CommentModal";
 import Modal from "../../../modal/Modal";
+import SingleComment from "./SingleComment";
 const RoadmapCard = ({ data }: { data: IRoadMap }) => {
   const [upvoteRoadmap] = useUpvoteRoadmapMutation();
   const { data: comments } = useGetFilteredCommentsQuery(data?._id);
@@ -85,7 +86,7 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
 
   console.log("selectedItem", selectedItem);
 
-  const handleReplyFunction = async (e, item) => {
+  const handleReplyFunction = async (e, item, reply) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const commentData = form.get("comment");
@@ -96,12 +97,24 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
 
     const isSecondReply = selectedItem?._id !== item?._id;
 
+    // const isThirdReply = selectedItem?._id !== item?._id;
+
+    // const thirdReply = {
+    //   id: item?._id,
+    //   data: {
+    //     secondReply: selectedItem?._id,
+    //     comment: commentData,
+    //     user: user?._id,
+    //   },
+    // };
+
     const secondReply = {
       id: item?._id,
       data: {
         firstReply: selectedItem?._id,
         comment: commentData,
         user: user?._id,
+        repliedTo: reply?.user,
       },
     };
 
@@ -110,6 +123,7 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
       data: {
         user: user?._id,
         comment: commentData,
+        repliedTo: reply?.user,
       },
     };
 
@@ -220,7 +234,10 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
     }
   };
 
-  const handleReplyButton = (item) => {
+  const handleReplyButton = (
+    item: Record<string, any>,
+    deepReply?: Record<string, any>
+  ) => {
     if (!user?.email) {
       toast.error("Please login first to reply");
       navigate("/login");
@@ -229,10 +246,15 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
     setOpenReplyInput(!openReplyInput);
 
     setSelectedItem(item);
+
     if (replyToId === item?._id) {
       setReplyToId("");
     } else {
       setReplyToId(item?._id);
+    }
+
+    if (deepReply?._id) {
+      setReplyToId(deepReply?._id);
     }
   };
 
@@ -256,7 +278,7 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
               {isUpvoted && (
                 <button
                   onClick={handleUpvote}
-                  className=" p-2 hover:bg-[#dcdddf] rounded-lg cursor-pointer"
+                  className="upvoteBtn p-2 hover:bg-[#dcdddf] rounded-lg cursor-pointer"
                 >
                   <AiFillLike className=" text-2xl text-p1" />
                 </button>
@@ -270,9 +292,15 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                 </button>
               )}
 
-              <p className="hidden upvote top-1 left-12 bg-[#cbd5e1] px-2 py-1 rounded font-sans text-p1 absolute ">
-                Upvote
-              </p>
+              {isUpvoted ? (
+                <p className="hidden upvote text-sm top-1 left-12 bg-[#cbd5e1] px-2 py-1 rounded  text-p1 absolute ">
+                  Remove
+                </p>
+              ) : (
+                <p className="hidden upvote text-sm top-1 left-12 bg-[#cbd5e1] px-2 py-1 rounded  text-p1 absolute ">
+                  Upvote
+                </p>
+              )}
             </div>
 
             <div className="relative">
@@ -283,7 +311,7 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                 <MessageCircle />
               </button>
 
-              <p className="hidden upvote top-1 left-12 bg-[#cbd5e1] px-2 py-1 rounded font-sans text-p1 absolute ">
+              <p className="hidden upvote text-sm top-1 left-12 bg-[#cbd5e1] px-2 py-1 rounded  text-p1 absolute ">
                 comments
               </p>
               {openModal && (
@@ -310,7 +338,7 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                 {data?.status}
               </p>{" "}
               <h1 className="text-xl font-semibold"> {data?.title}</h1>
-              <span className="max-w-max  py-1 px-2 text-white text-[10px] bg-p1 rounded-full font-sans ">
+              <span className="max-w-max  py-1 px-2 text-white text-[10px] bg-p1 rounded-full  ">
                 {data?.category}
               </span>
             </div>
@@ -320,12 +348,23 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
 
         <div className="flex gap-4 flex-col justify-between border-l border-b1 pl-5 ">
           <button>+{data?.upvoteCount}</button>
-          <button
-            onClick={() => setOpenComment(!openComment)}
-            className=" p-2 hover:bg-[#dcdddf] rounded-lg cursor-pointer"
-          >
-            <MessageSquareText />
-          </button>
+          <div className="relative">
+            <button
+              onClick={() => setOpenComment(!openComment)}
+              className="upvoteBtn p-2 hover:bg-[#dcdddf] rounded-lg cursor-pointer"
+            >
+              <MessageSquareText />
+            </button>
+            {openComment ? (
+              <p className="w-[130px] mx-auto text-sm hidden upvote  top-1 right-12 bg-[#cbd5e1] px-2 py-1 rounded  text-p1 absolute ">
+                Hide Comments
+              </p>
+            ) : (
+              <p className="w-[130px] mx-auto text-sm hidden upvote  top-1 right-12 bg-[#cbd5e1] px-2 py-1 rounded  text-p1 absolute ">
+                Show Comments
+              </p>
+            )}
+          </div>
         </div>
       </div>
       {openComment && (
@@ -335,28 +374,18 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
               key={item?._id}
               className="flex rounded p-2  gap-2  items-start"
             >
-              <div className="bg-[#cbd5e1] w-full pl-3 pb-1 rounded">
-                <div className="flex items-center">
-                  <div className="flex gap-2  mt-2 mr-2 ">
+              <div className="bg-[#cbd5e1] pr-2 pt-3 w-full pl-3 pb-1 rounded">
+                <div className="flex items-center ">
+                  <div className="flex gap-2 mr-2 ">
                     <img
                       className="w-[40px] h-[40px] rounded-full"
                       src={item?.user?.img}
                       alt=""
                     />
-                    <div className=" bg-white max-w-max rounded-xl p-2 ">
-                      <h1 className="font-semibold">{item?.user?.name}</h1>
-                      <p className="">
-                        {item?.isDeleted ? (
-                          <span className="text-red-500">
-                            comment has been deleted{" "}
-                          </span>
-                        ) : (
-                          item?.comment
-                        )}
-                      </p>
-                    </div>
+
+                    <SingleComment item={item} />
                   </div>
-                  <div>
+                  <div className=" ">
                     <button
                       onClick={() => handleCommentUpdateButton(item, item)}
                       className="hover:bg-p1 w-[30px] h-[30px] hover:text-white cursor-pointer text-p1 rounded-full flex justify-center items-center "
@@ -373,13 +402,13 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                 </div>
                 <button
                   onClick={() => handleReplyButton(item)}
-                  className="cursor-pointer text-[11px] text-p1 hover:underline ml-14 mb-2 "
+                  className="cursor-pointer text-[11px] mt-2 text-p1 hover:underline ml-14 mb-2 "
                 >
                   Reply
                 </button>
                 {replyToId === item?._id && openReplyInput && (
                   <form
-                    onSubmit={(e) => handleReplyFunction(e, item)}
+                    onSubmit={(e) => handleReplyFunction(e, item, item)}
                     className="flex items-center gap-2 mb-2 ml-12"
                   >
                     <textarea
@@ -402,23 +431,10 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                             src={reply?.user?.img}
                             alt=""
                           />
-                          <div className=" bg-white rounded-xl p-2">
-                            <h1 className="font-semibold text-sm">
-                              {reply?.user?.name}
-                            </h1>
-                            <p key={reply?._id} className="">
-                              <span className="hover:underline cursor-pointer font-semibold mr-1 ">
-                                {item?.user?.name}
-                              </span>{" "}
-                              {reply?.isDeleted ? (
-                                <span className="text-red-500">
-                                  comment has been deleted{" "}
-                                </span>
-                              ) : (
-                                reply?.comment
-                              )}
-                            </p>
-                          </div>
+                          <SingleComment
+                            item={reply}
+                            replyReceiver={item?.user?.name}
+                          />
                         </div>
                         <div>
                           <button
@@ -441,13 +457,13 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                       </div>
                       <button
                         onClick={() => handleReplyButton(reply)}
-                        className="cursor-pointer text-[11px] text-p1 hover:underline ml-12 "
+                        className="cursor-pointer text-[11px] mt-2 text-p1 hover:underline ml-12 "
                       >
                         Reply
                       </button>
                       {replyToId === reply?._id && openReplyInput && (
                         <form
-                          onSubmit={(e) => handleReplyFunction(e, item)}
+                          onSubmit={(e) => handleReplyFunction(e, item, reply)}
                           className="flex items-center gap-2 mb-2 ml-12"
                         >
                           <textarea
@@ -462,50 +478,65 @@ const RoadmapCard = ({ data }: { data: IRoadMap }) => {
                       )}
 
                       <div className="ml-10 space-y-3 mb-4">
-                        {reply?.replies.map((deepReply, index) => (
-                          <div key={index} className="flex items-center gap-2">
-                            <div className="flex  gap-2  ">
-                              <img
-                                className="w-[30px] h-[30px] rounded-full"
-                                src={deepReply?.user?.img}
-                                alt=""
-                              />
-                              <div className="bg-white max-w-max rounded-xl p-2">
-                                <h1 className="font-semibold text-sm">
-                                  {deepReply?.user?.name}
-                                </h1>
-                                <p key={reply?._id} className="">
-                                  <span className="hover:underline cursor-pointer font-semibold mr-1">
-                                    {reply?.user?.name}
-                                  </span>{" "}
-                                  {deepReply?.isDeleted ? (
-                                    <span className="text-red-500">
-                                      comment has been deleted{" "}
-                                    </span>
-                                  ) : (
-                                    deepReply?.comment
-                                  )}
-                                </p>
+                        {reply?.replies?.map((deepReply, index) => (
+                          <div key={index}>
+                            <div className="flex items-center gap-2">
+                              <div className="flex  gap-2  ">
+                                <img
+                                  className="w-[30px] h-[30px] rounded-full"
+                                  src={deepReply?.user?.img}
+                                  alt=""
+                                />
+
+                                <SingleComment
+                                  item={deepReply}
+                                  replyReceiver={deepReply?.repliedTo}
+                                />
+                              </div>
+                              <div>
+                                <button
+                                  onClick={() =>
+                                    handleCommentUpdateButton(deepReply, item)
+                                  }
+                                  className="hover:bg-p1 w-[30px] h-[30px] hover:text-white cursor-pointer text-p1 rounded-full flex justify-center items-center "
+                                >
+                                  <SquarePen className="w-[20px]" />
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleDeleteCommentButton(reply, item)
+                                  }
+                                  className="hover:bg-p1 w-[30px] h-[30px] hover:text-white cursor-pointer text-p1 rounded-full flex justify-center items-center "
+                                >
+                                  <Trash2 className="w-[20px]" />
+                                </button>
                               </div>
                             </div>
-                            <div>
-                              <button
-                                onClick={() =>
-                                  handleCommentUpdateButton(deepReply, item)
+                            <button
+                              onClick={() =>
+                                handleReplyButton(reply, deepReply)
+                              }
+                              className="cursor-pointer text-[11px] mt-2 text-p1 hover:underline ml-12 "
+                            >
+                              Reply
+                            </button>
+                            {replyToId === deepReply?._id && openReplyInput && (
+                              <form
+                                onSubmit={(e) =>
+                                  handleReplyFunction(e, item, deepReply)
                                 }
-                                className="hover:bg-p1 w-[30px] h-[30px] hover:text-white cursor-pointer text-p1 rounded-full flex justify-center items-center "
+                                className="flex items-center gap-2 mb-2 ml-12"
                               >
-                                <SquarePen className="w-[20px]" />
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleDeleteCommentButton(deepReply, item)
-                                }
-                                className="hover:bg-p1 w-[30px] h-[30px] hover:text-white cursor-pointer text-p1 rounded-full flex justify-center items-center "
-                              >
-                                <Trash2 className="w-[20px]" />
-                              </button>
-                            </div>
+                                <textarea
+                                  className="h-[80px] w-3/4 bg-white rounded-2xl px-4 py-2  resize-none"
+                                  name="comment"
+                                />
+
+                                <button className=" cursor-pointer hover:bg-p1 max-w-max px-4 text-white py-2 rounded-lg bg-p1/80 ">
+                                  <SendHorizontal className="text-white text-2xl w-full mx-auto" />
+                                </button>
+                              </form>
+                            )}
                           </div>
                         ))}
                       </div>
